@@ -1,0 +1,151 @@
+.search-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: white;
+  padding: 15px 30px;
+  font-family: 'Matter', sans-serif;
+  flex-wrap: wrap;
+}
+
+.nav-left {
+  flex: 1;
+}
+
+.nav-left h2{
+  margin-top:-35px;
+  margin-left:70px;
+  font-family:"Krona One";
+  color:white;
+}
+
+.nav-left a{
+  text-decoration: none;
+}
+
+.nav-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom:-10px;
+  padding-left:10px;
+}
+
+.nav-middle {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-right {
+  flex: 1;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.language-dropdown {
+  background-color: #222;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 10px 20px;
+  color: white;
+  align-items: center;
+}
+
+.nav-middle {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nowplaying a{
+  text-decoration:none;
+  font-weight: bold;
+  color:white;
+}

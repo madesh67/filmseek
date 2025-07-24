@@ -1,0 +1,322 @@
+html{
+    scroll-behavior:smooth;
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    display: flex;
+    background-color: #222;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-logo-title {
+    font-size: 24px;
+    font-family: "Krona One", serif;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Removed problematic absolute positioning */
+}
+
+.header-logo{
+    object-fit: cover;
+    width:40px;
+    height:40px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex:1;
+    margin-left: auto;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-family: Matter, sans-serif;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #ff4500;
+    transform: translateY(-2px);
+}
+
+.centered-section{
+    display: flex;
+    padding-top:30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: auto 900px 450px auto;
+}
+
+.centered-section h1{
+    font-family: Matter, sans-serif;
+    font-size:40px;
+    width:100%;
+    max-width:350px;
+    margin-bottom:-60px;
+    margin-top:130px;
+}
+
+.intro{
+    background-color:#222;
+    color:white;
+    background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    position:unset;
+    height:750px;
+}
+
+.posters{
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    display:flex;
+    white-space:nowrap;
+    justify-content: center;
+    gap:10px;
+    scroll-behavior:smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width:960px;
+    margin:-920px auto auto 560px;
+    height: 710px; /* Add fixed height */
+}
+
+.posters::-webkit-scrollbar{
+    display:none;
+}
+
+.poster {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.poster.active {
+    flex: 5;
+}
+
+.poster.passive {
+    flex: 0.8;
+}
+
+.poster-img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.poster.active .poster-img {
+
+    filter: brightness(70%);
+}
+
+.poster.passive .poster-img {
+    mask-image: none;
+    filter: brightness(50%) grayscale(30%);
+}
+
+.posterDetail{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Matter, sans-serif;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+}
+
+.poster.active .posterDetail {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.posterDetail h1{
+    font-size: 55px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.posterDetail h2 {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.moreInfo{
+    position: relative;
+    z-index: 1;
+    margin: 40px auto;
+    display: block;
+    font-family: Matter, sans-serif;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    margin-bottom:80px;
+}
+
+.moreInfo:hover {
+    background-color: #ff4500;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for poster section */
+@media screen and (max-width: 768px) {
+    .posters {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        margin: 20px auto;
+        height: auto;
+    }
+    
+    .poster.active,
+    .poster.passive {
+        flex: none;
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    
+    .poster-img {
+        height: 400px;
+    }
+    
+    .posterDetail h1 {
+        font-size: 30px;
+    }
+    
+    .moreInfo {
+        font-size: 20px;
+    }
+}
+
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: orangered;
+  color: white;
+  font-size: 17px;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius:8px;
+}
+
+form.example button:hover {
+  background: rgb(165, 46, 3);
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.example{
+  margin-top:10px;
+}
+
+
+/* Style the search field */
+.searchBar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.searchBar input[type=text]:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+/* Style the submit button */
+.searchBar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: orangered;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius:8px;
+}
+
+.searchBar button:hover {
+  background: rgb(165, 46, 3);
+}
+
+/* Clear floats */
+.searchBar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.searchBar{
+  margin-top:150px;
+  margin-right:30px;
+  margin:150px 30px auto auto;
+}

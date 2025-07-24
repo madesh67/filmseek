@@ -1,0 +1,497 @@
+.search-page {
+  padding: 30px;
+  background-color: #111;
+  color: white;
+  min-height: 100vh;
+  font-family: Matter, sans-serif;
+}
+
+.search-heading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Search container for input and button */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 500px;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #333;
+  color: white;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.search-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Layout: Filters (Left) & Results (Right) */
+.search-layout {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Left Filters */
+.filters {
+  width: 250px;
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  height: max-content;
+  top: 100px;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.filter-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Right Results */
+.search-results {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.search-results:has(.not-found-container) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Movie Cards */
+/* Movie Cards - Fixed height version */
+.movie-card {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 180px;
+  height: 380px; /* Increased height from 350px to 380px */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 250px; /* FIXED IMAGE HEIGHT */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.movie-card h3 {
+  font-size: 13px; /* Slightly smaller font */
+  margin: 10px 0 5px 0;
+  color: #fff;
+  line-height: 1.2;
+  height: 50px; /* Increased title area height */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Allow 3 lines for longer titles */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.movie-card p {
+  font-size: 12px;
+  color: #ccc;
+  margin: 5px 0 0 0;
+  flex-shrink: 0; /* Keep date at bottom */
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* Spinner Containers */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 50px;
+  color: #ccc;
+}
+
+.loading-container p {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* Not Found Container */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 50px;
+  color: #ccc;
+  text-align: center;
+}
+
+.not-found-container h3 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.not-found-container p {
+  font-size: 16px;
+  color: #999;
+  margin: 0;
+}
+
+/* Genres Grid */
+.genres-grid {
+  max-height: 150px;
+  overflow-y: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.genre-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.genre-checkbox input {
+  margin-right: 8px;
+}
+
+.genre-checkbox span {
+  line-height: 1;
+}
+
+/* Date Range */
+.date-range {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.date-range label {
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 2px;
+}
+
+.date-range input[type="date"] {
+  padding: 6px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Rating and Runtime Sliders */
+.rating-container,
+.runtime-container {
+  margin-top: 10px;
+}
+
+.rating-slider,
+.runtime-slider {
+  width: 100%;
+  margin-bottom: 8px;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  outline: none;
+}
+
+.rating-slider::-webkit-slider-thumb,
+.runtime-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.rating-scale,
+.runtime-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.scale-number {
+  width: 12px;
+  text-align: center;
+}
+
+/* Filter Buttons */
+.apply-filter-btn,
+.clear-filter-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.apply-filter-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.apply-filter-btn:hover {
+  background-color: #0056b3;
+}
+
+.apply-filter-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.clear-filter-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.clear-filter-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Filter section improvements */
+.filter-section select,
+.filter-section input {
+  font-size: 13px;
+}
+
+/* Scrollbar styling for genres */
+.genres-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.genres-grid::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 3px;
+}
+
+.genres-grid::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 3px;
+}
+
+.genres-grid::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+.filter-section select:disabled {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.search-results {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  align-content: start; /* Prevents stretching */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .search-results {
+    justify-content: center; /* Center cards on mobile */
+  }
+  
+  .movie-card {
+    width: calc(50% - 10px);
+    height: 300px; /* Smaller height for mobile */
+  }
+  
+  .movie-card img {
+    height: 200px; /* Smaller image for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+.disabled-filter {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.disabled-filter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.filter-disabled-note {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+}
+
+.genre-checkbox input:disabled + span {
+  color: #666;
+}
+
+input[type="date"]:disabled,
+input[type="range"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filter-pagination {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.filter-page-info {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.filter-pagination .page-nav {
+  margin: 0;
+  justify-content: center;
+}
+
+.filter-pagination .page-nav-btn {
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 0 2px;
+}
+
+.disabled-filter {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.disabled-filter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.filter-disabled-note {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+}
+
+.movie-card {
+  /* Your existing styles... */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+}
+
+.movie-card:active {
+  transform: translateY(-2px);
+}

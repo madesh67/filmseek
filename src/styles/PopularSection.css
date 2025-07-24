@@ -1,0 +1,91 @@
+.popular-section {
+  background-color: #111;
+  color: #fff;
+  padding: 60px 60px;;
+  position:relative;
+  display:block;
+  -webkit-text-size-adjust: 100%;
+}
+
+.popular-description {
+  font-size: 50px;
+  color: #ccc;
+  font-family: Matter, sans-serif;
+  padding-bottom:-80px;
+}
+
+.tab-buttons button {
+  border: none;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background-color: #ff4500;
+}
+
+.popular-list {
+  max-width:100%;
+  overflow-y:auto;
+  display: flex;
+  white-space:nowrap;
+  justify-content: flex-start;
+  margin-top: -50px;
+  padding:10px;
+  max-height:600px;
+  scroll-behavior:smooth;
+  width:1400px;
+  gap:20px;
+}
+
+.popular-list::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	background-color: white;
+}
+
+.popular-list::-webkit-scrollbar
+{
+	background-color:black;
+}
+
+.popular-list::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: orangered;
+}
+
+.popular-card {
+  width: 200px;
+  height: 300px;
+  flex:0 0 auto;
+}
+
+.popular-card img {
+  width: 200;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.popular-card h4 {
+  font-size: 16px;
+  color: #eee;
+  font-family: Matter, sans-serif;
+}
+
+.PopularContainer{
+  height:300px;
+  margin-top:100px;
+}
+
+.PopularContainer button{
+  border-radius:14px;
+  color:rgb(68, 66, 66);
+}
