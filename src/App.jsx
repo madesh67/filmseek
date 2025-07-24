@@ -5,6 +5,7 @@ import MovieDetails from './Components/MovieDetails';
 
 export default function App(){
   return (
+    <Router basename="/filmseek">
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -12,5 +13,6 @@ export default function App(){
       <Route path="/movie-details/:type/:id" element={<MovieDetails />} />
     </Routes>
     </BrowserRouter>
+    </Router>
   )
 }
