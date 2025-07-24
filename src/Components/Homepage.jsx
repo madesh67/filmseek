@@ -25,6 +25,11 @@ function Homepage() {
      }
   };
 
+   const handleMoviesClick = (e) => {
+        e.preventDefault();
+        navigate('/movies');
+    };
+
   return (
     <div className='homepage'>
       <section className="intro">
@@ -35,7 +40,7 @@ function Homepage() {
                 <a href="#popular-section">Popular Movies</a>
                 <a href="#top-rated">Top Rated</a>
                 <a href="#upcoming">upcoming</a>
-                <Link to="/movies">Movies</Link>
+                <button onClick={handleMoviesClick} className="nav-button">Movies</button>
             </nav>
             <div>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
