@@ -54,6 +54,12 @@ html{
     transition: all 0.3s ease;
 }
 
+.movies-nav-button{
+    font-family:Matter, sans-serif;
+    border:none;
+    background:none;
+}
+
 .nav a:hover {
     background-color: #ff4500;
     transform: translateY(-2px);
