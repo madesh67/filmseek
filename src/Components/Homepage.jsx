@@ -6,6 +6,7 @@ import TopRatedSection from './homepage/TopRated';
 import UpcomingMoviesSection from './homepage/UpcomingMoviesSection';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Homepage() {
 
@@ -34,7 +35,7 @@ function Homepage() {
                 <a href="#popular-section">Popular Movies</a>
                 <a href="#top-rated">Top Rated</a>
                 <a href="#upcoming">upcoming</a>
-                <a href="/movies">Movies</a>
+                <Link to="/movies">Movies</Link>
             </nav>
             <div>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
