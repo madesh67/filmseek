@@ -58,9 +58,13 @@ html{
     font-family:Matter, sans-serif;
     border:none;
     background:none;
+    font-weight:600;
+    color:white;
+    border-radius:6px;
+    padding:10px 15px;
 }
 
-.nav a:hover {
+.nav a:hover, .movies-nav-button:hover{
     background-color: #ff4500;
     transform: translateY(-2px);
 }
