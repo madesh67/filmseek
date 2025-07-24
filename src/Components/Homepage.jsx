@@ -40,7 +40,7 @@ function Homepage() {
                 <a href="#popular-section">Popular Movies</a>
                 <a href="#top-rated">Top Rated</a>
                 <a href="#upcoming">upcoming</a>
-                <a href="/movies">Movies</a>
+                <a href={handleMoviesClick}>Movies</a>
             </nav>
             <div>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
