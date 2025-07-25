@@ -219,7 +219,7 @@ nav a:hover, .movies-nav-button:hover{
         padding:5px;
     }
 
-    ScrollLink{
+    a{
         display:none;
     }
 
