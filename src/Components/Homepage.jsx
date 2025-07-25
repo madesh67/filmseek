@@ -44,10 +44,9 @@ function Homepage() {
             <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
             <h1 className="header-logo-title">FILMSEEK</h1>
             <nav>
-                <ScrollLink to="popular-section" smooth={true} duration={500} className="nav-link">Popular Movies</ScrollLink>
-                <a href="#top-rated" onClick={(e) => handleSectionClick(e, 'top-rated')}>Top Rated</a>
-                <a href="#upcoming" onClick={(e) => handleSectionClick(e, 'upcoming')}>upcoming</a>
-                <a href="#trending" onClick={(e) => handleSectionClick(e, 'trending')}>trending</a>
+                <ScrollLink to="popular-section" smooth={true} duration={500} className="nav-link">Popular</ScrollLink>
+                <ScrollLink to="top-rated" smooth={true} duration={500} className="nav-link">Top Rated </ScrollLink>
+                <ScrollLink to="upcoming" smooth={true} duration={500} className="nav-link">Upcoming</ScrollLink>
                 <Link to="/movies" className="movies-nav-button">Movies</Link>
             </nav>
             <div className="header-search-bar">
