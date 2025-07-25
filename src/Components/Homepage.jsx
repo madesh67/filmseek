@@ -25,9 +25,13 @@ function Homepage() {
      }
   };
 
-   const handleMoviesClick = (e) => {
-        e.preventDefault();
+   const handleMoviesClick = () => {
         navigate('/movies');
+    };
+
+    const handleSectionClick = (e, sectionId) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        scrollToSection(sectionId);
     };
 
   return (
@@ -37,9 +41,9 @@ function Homepage() {
             <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
             <h1 className="header-logo-title">FILMSEEK</h1>
             <nav className="nav">
-                <a href="#popular-section">Popular Movies</a>
-                <a href="#top-rated">Top Rated</a>
-                <a href="#upcoming">upcoming</a>
+                <a href="#popular-section" onClick={(e) => handleSectionClick(e, 'popular-section')}>Popular Movies</a>
+                <a href="#top-rated" onClick={(e) => handleSectionClick(e, 'top-rated')}>Top Rated</a>
+                <a href="#upcoming" onClick={(e) => handleSectionClick(e, 'upcoming')}>upcoming</a>
                 <Link to="/movies" className="movies-nav-button">Movies</Link>
             </nav>
             <div>
