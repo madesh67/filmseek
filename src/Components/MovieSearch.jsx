@@ -256,9 +256,6 @@ function Movie() {
       'top_rated': 'Top Rated Movies',
       'upcoming': 'Upcoming Movies',
       'now_playing': 'Now Playing Movies',
-      'tv_popular': 'Popular TV Shows',
-      'tv_airing_today': 'Airing Today TV Shows',
-      'tv_on_the_air': 'On TV Shows',
       'now_playing_combined': 'Now Playing - Movies & TV Shows'
     };
     return categoryTitles[category] || 'Movies & TV Shows';
