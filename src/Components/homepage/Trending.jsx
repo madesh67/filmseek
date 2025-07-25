@@ -52,10 +52,12 @@ const trending = () => {
       <div className="trending-list" id="moviesWrapper" ref={wrapperRef}>
         {items.map(item => (
           <div key={item.id} className="trending-card">
+            <a href={`/movie-details/${activeTab}/${item.id}`}>
             <img
               src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
               alt={item.title || item.name}
             />
+            </a>
           </div>
         ))}
       </div>
