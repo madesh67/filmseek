@@ -41,13 +41,13 @@ function Homepage() {
         <div className="header">
             <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
             <h1 className="header-logo-title">FILMSEEK</h1>
-            <nav className="nav">
+            <nav>
                 <ScrollLink to="popular-section" smooth={true} duration={500} className="nav-link">Popular</ScrollLink>
                 <ScrollLink to="top-rated" smooth={true} duration={500} className="nav-link">Top Rated </ScrollLink>
                 <ScrollLink to="upcoming" smooth={true} duration={500} className="nav-link">Upcoming</ScrollLink>
                 <Link to="/movies" className="movies-nav-button">Movies</Link>
             </nav>
-            <div>
+            <div className="header-search-bar">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                     <form className="example">
                     <input type="text" placeholder="Search.." name="search" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} onKeyPress={handleKeyPress}></input>
