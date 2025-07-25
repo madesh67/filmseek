@@ -7,6 +7,7 @@ import UpcomingMoviesSection from './homepage/UpcomingMoviesSection';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 
 function Homepage() {
 
@@ -41,7 +42,7 @@ function Homepage() {
             <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
             <h1 className="header-logo-title">FILMSEEK</h1>
             <nav className="nav">
-                <a href="#popular-section" onClick={(e) => handleSectionClick(e, 'popular-section')}>Popular Movies</a>
+                <ScrollLink to="popular-section" smooth={true} duration={500} className="nav-link">Popular Movies</ScrollLink>
                 <a href="#top-rated" onClick={(e) => handleSectionClick(e, 'top-rated')}>Top Rated</a>
                 <a href="#upcoming" onClick={(e) => handleSectionClick(e, 'upcoming')}>upcoming</a>
                 <Link to="/movies" className="movies-nav-button">Movies</Link>
