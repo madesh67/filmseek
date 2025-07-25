@@ -5,67 +5,172 @@ import PopularSection from './homepage/PopularSection';
 import TopRatedSection from './homepage/TopRated';
 import UpcomingMoviesSection from './homepage/UpcomingMoviesSection';
 import Trending from './homepage/Trending.jsx';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import Explore from './homepage/Explore.jsx';
+import Breadcrumb from './homepage/Breadcrumb'; // Add this import
 
 function Homepage() {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [activeSection, setActiveSection] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+    const handleSearch = (e) => {
+        e.preventDefault(); // Add this to prevent form submission
+        if (searchQuery.trim() && searchQuery.length > 2) {
+            navigate(`/movies?search=${encodeURIComponent(searchQuery.trim())}`);
+        }
+    };
 
-  const handleSearch = () => {
-      if (searchQuery.trim() && searchQuery.length > 2) {
-        navigate(`/movies?search=${encodeURIComponent(searchQuery.trim())}`);
-      }
-  };
-
-  const handleKeyPress = (e) => {
+    const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-        handleSearch();
-     }
-  };
+            handleSearch(e);
+        }
+    };
 
-   const handleMoviesClick = () => {
+    const handleMoviesClick = () => {
         navigate('/movies');
     };
 
-    const handleSectionClick = (e, sectionId) => {
-        e.preventDefault(); // Prevent default anchor behavior
-        scrollToSection(sectionId);
-    };
+    // Track which section is currently in view
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
 
-  return (
-    <div className='homepage'>
-      <section className="intro">
-        <div className="header">
-            <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
-            <h1 className="header-logo-title">FILMSEEK</h1>
-            <nav>
-                <ScrollLink to="popular-section" smooth={true} duration={500} className="nav-link">Popular</ScrollLink>
-                <ScrollLink to="top-rated" smooth={true} duration={500} className="nav-link">Top Rated </ScrollLink>
-                <ScrollLink to="upcoming" smooth={true} duration={500} className="nav-link">Upcoming</ScrollLink>
-                <Link to="/movies" className="movies-nav-button">Movies</Link>
-            </nav>
-            <div className="header-search-bar">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                    <form className="example">
-                    <input type="text" placeholder="Search.." name="search" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} onKeyPress={handleKeyPress}></input>
-                        <button type="submit" onClick={handleSearch} disabled={searchQuery.length<=2}><i className="fa fa-search"></i></button>
-                    </form>
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        
+        // Observe all sections
+        const sections = ['popular-section', 'top-rated', 'upcoming', 'trending'];
+        sections.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div className='homepage'>
+            {/* Add breadcrumb - it will only show on non-homepage routes */}
+            <Breadcrumb />
+            
+            <section className="intro">
+                <div className="header">
+                    <Link to="/" className="header-brand">
+                        <img className="header-logo" src={logo} width={50} height={50} alt="filmseek"></img>
+                        <h1 className="header-logo-title">FILMSEEK</h1>
+                    </Link>
+                    
+                    <nav className="main-navigation">
+                        <ScrollLink 
+                            to="popular-section" 
+                            smooth={true} 
+                            duration={300} 
+                            className={`nav-link ${activeSection === 'popular-section' ? 'active' : ''}`}
+                            spy={true}
+                            activeClass="active"
+                        >
+                            Popular
+                        </ScrollLink>
+                        
+                        <ScrollLink 
+                            to="top-rated" 
+                            smooth={true} 
+                            duration={300} 
+                            className={`nav-link ${activeSection === 'top-rated' ? 'active' : ''}`}
+                            spy={true}
+                            activeClass="active"
+                        >
+                            Top Rated
+                        </ScrollLink>
+                        
+                        <ScrollLink 
+                            to="upcoming" 
+                            smooth={true} 
+                            duration={300} 
+                            className={`nav-link ${activeSection === 'upcoming' ? 'active' : ''}`}
+                            spy={true}
+                            activeClass="active"
+                        >
+                            Upcoming
+                        </ScrollLink>
+                        
+                        <ScrollLink 
+                            to="trending" 
+                            smooth={true} 
+                            duration={300} 
+                            className={`nav-link ${activeSection === 'trending' ? 'active' : ''}`}
+                            spy={true}
+                            activeClass="active"
+                        >
+                            Trending
+                        </ScrollLink>
+                        
+                        <Link to="/movies" className="movies-nav-button">
+                            <i className="fa fa-film" aria-hidden="true"></i>
+                            Movies
+                        </Link>
+                    </nav>
+                    
+                    <div className="header-search-bar">
+                        <form className="search-form" onSubmit={handleSearch}>
+                            <div className="search-input-group">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search movies, TV shows..." 
+                                    name="search" 
+                                    value={searchQuery} 
+                                    onChange={(e) => setSearchQuery(e.target.value)} 
+                                    onKeyPress={handleKeyPress}
+                                    className="search-input"
+                                    aria-label="Search movies and TV shows"
+                                />
+                                <button 
+                                    type="submit" 
+                                    onClick={handleSearch} 
+                                    disabled={searchQuery.length <= 2}
+                                    className="search-button"
+                                    aria-label="Search"
+                                >
+                                    <i className="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <Homeintro />
+            </section>
+            
+            {/* Add IDs to sections for scroll spy functionality */}
+            <div id="popular-section">
+                <PopularSection />
             </div>
+            <div id="top-rated">
+                <TopRatedSection />
+            </div>
+            <div id="upcoming">
+                <UpcomingMoviesSection />
+            </div>
+            <div id="trending">
+                <Trending />
+            </div>
+            <Explore />
         </div>
-        <Homeintro />
-      </section>
-      <PopularSection />
-      <TopRatedSection />
-      <UpcomingMoviesSection />
-      <Trending />
-      <Explore />
-    </div>
-  );
+    );
 }
 
 export default Homepage;

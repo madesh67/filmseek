@@ -7,6 +7,7 @@ export default function Homeintro() {
     const [activeCard, setActiveCard] = useState(0);
     const [items, setItems] = useState([]);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    
     const navigate = useNavigate();
     const intervalRef = useRef(null);
     const timeoutRef = useRef(null);
@@ -17,7 +18,6 @@ export default function Homeintro() {
         }
     };
 
-    
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             handleSearch();
@@ -33,7 +33,7 @@ export default function Homeintro() {
                 const nextCard = (prevCard + 1) % Math.min(items.length, 5);
                 return nextCard;
             });
-        }, 5000);
+        }, 3000);
     }, [items.length]);
     
     // Stop auto-rotation temporarily on user interaction
@@ -47,7 +47,7 @@ export default function Homeintro() {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
             startAutoRotation();
-        }, 10000);
+        }, 5000);
     }, [startAutoRotation]);
     
     // Handle manual card selection
@@ -99,10 +99,9 @@ export default function Homeintro() {
     }, [items, isAutoPlaying, startAutoRotation]);
 
     const handleMoreInfo = (movieId, event) => {
-        event.stopPropagation(); // Prevent triggering card hover/click
+        event.stopPropagation();
         navigate(`/movie-details/movie/${movieId}`);
     };
-
 
     return (
         <section id='intro'>
