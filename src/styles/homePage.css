@@ -35,7 +35,7 @@ html{
     height:40px;
 }
 
-.nav {
+nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,7 @@ html{
     margin-left: auto;
 }
 
-.nav a {
+nav a {
     text-decoration: none;
     color: white;
     font-weight: 600;
@@ -54,7 +54,17 @@ html{
     transition: all 0.3s ease;
 }
 
-.nav a:hover {
+.movies-nav-button{
+    font-family:Matter, sans-serif;
+    border:none;
+    background:none;
+    font-weight:600;
+    color:white;
+    border-radius:6px;
+    padding:10px 15px;
+}
+
+nav a:hover, .movies-nav-button:hover{
     background-color: #ff4500;
     transform: translateY(-2px);
 }
@@ -203,34 +213,65 @@ html{
 
 /* Responsive adjustments for poster section */
 @media screen and (max-width: 768px) {
-    .posters {
-        flex-direction: column;
-        align-items: center;
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 100%;
-        margin: 20px auto;
-        height: auto;
+    .header{
+        display:flex;
+        padding:5px;
     }
-    
-    .poster.active,
-    .poster.passive {
-        flex: none;
-        width: 90%;
-        margin-bottom: 20px;
+
+    a{
+        display:none;
     }
-    
-    .poster-img {
-        height: 400px;
+
+    .movies-nav-button{
+        display:flex;
+        margin-left:-40px;
     }
-    
-    .posterDetail h1 {
-        font-size: 30px;
+
+    .header-logo{
+        width:30px;
+        height:30px;
+        margin-left:20px;
     }
-    
-    .moreInfo {
-        font-size: 20px;
+    .header-logo-title{
+        margin-top:-5px;
+        font-size:15px;
+        flex:1;
     }
+
+    .header-search-bar{
+        margin-bottom:10px;
+    }
+
+    .example{
+        width:200px;
+        padding:5px;
+        flex:1;
+    }
+
+    .centered-section{
+        width:100%;
+    }
+    .centered-section h1{
+        justify-content: center;
+        align-items:center;
+        text-align: center;
+        width:400px;
+    }
+
+    .intro{
+        height:1400px;
+    }
+
+    .searchBar{
+        display:flex;
+        height:50px;
+    }
+
+    .posters{
+        margin-top:-300px;
+        margin-left:0px;
+    }
+
 }
 
 

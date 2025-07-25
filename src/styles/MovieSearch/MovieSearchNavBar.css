@@ -149,3 +149,128 @@
   font-weight: bold;
   color:white;
 }
+
+.mobile-menu{
+  visibility:hidden;
+}
+
+.nav-right{
+  flex:0;
+  visibility:hidden;
+}
+
+@media (max-width:768px) {
+  .search-navbar{
+    height: 80px; /* Back to fixed height */
+    flex-direction: row; /* Back to horizontal */
+    padding: 10px 20px;
+  }
+
+  .nav-left{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    flex: 1;
+  }
+
+  .nav-left a{
+    display:flex;
+  }
+
+  .nav-logo{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-left h2{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    margin-top:5px;
+    margin-left:5px;
+  }
+
+  .nav-middle{
+    display: none; /* Hide the original navigation items */
+  }
+
+  .nav-right{
+    display: flex; /* Show nav-right again */
+    justify-content: flex-end;
+    align-items: center;
+    visibility: visible;
+  }
+
+  /* Hamburger Menu Button */
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  /* Mobile Menu Dropdown */
+  .mobile-menu {
+    visibility: visible;
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: #222;
+    min-width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  .mobile-menu.active {
+    display: block;
+  }
+
+  .mobile-menu a {
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s ease;
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-menu a:hover {
+    background-color: #444;
+  }
+
+  /* Animation for menu button */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+}

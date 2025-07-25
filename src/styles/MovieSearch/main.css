@@ -379,12 +379,12 @@
   }
   
   .movie-card {
-    width: calc(50% - 10px);
+    width: calc(100% - 10px);
     height: 300px; /* Smaller height for mobile */
   }
   
   .movie-card img {
-    height: 200px; /* Smaller image for mobile */
+    height: 200px;
   }
 }
 

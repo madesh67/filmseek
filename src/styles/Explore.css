@@ -1,0 +1,36 @@
+.explore{
+    background:#111;
+    color:white;
+    padding-top:200px;
+    justify-content: center;
+    align-items:center;
+}
+
+.explore-description{
+    font-family:Matter, sans-serif;
+    font-size:50px;
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.explore-btn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explore button{
+    font-size:20px;
+    font-family:Matter, sans-serif;
+    padding:10px;
+    background-color: #333;
+    color:white;
+    border:none;
+    border-radius: 4px;
+    margin-bottom:200px;
+}
+
+.explore button:hover {
+  background-color: #ff4500;
+  cursor:pointer;
+}
